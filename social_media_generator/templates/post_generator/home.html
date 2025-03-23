@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostPro - Social Media Post Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .platform-icon {
+            transition: all 0.3s ease;
+        }
+        .platform-icon:hover {
+            transform: scale(1.1);
+            color: #8b5cf6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm" x-data="{ open: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-indigo-600 font-bold text-xl">PostPro</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Home
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Templates
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Analytics
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Pricing
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+                        Sign Up Free
+                    </button>
+                    <button class="ml-3 bg-white hover:bg-gray-100 text-indigo-600 border border-indigo-600 px-4 py-2 rounded-md text-sm font-medium">
+                        Log In
+                    </button>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="open" class="sm:hidden" style="display: none;">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#" class="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Templates</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Analytics</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Pricing</a>
+                <div class="mt-4 space-y-2 px-4">
+                    <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+                        Sign Up Free
+                    </button>
+                    <button class="w-full bg-white hover:bg-gray-100 text-indigo-600 border border-indigo-600 px-4 py-2 rounded-md text-sm font-medium">
+                        Log In
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:flex lg:items-center lg:justify-between">
+                <div class="lg:w-1/2">
+                    <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+                        Create Stunning Social Media Posts in Minutes
+                    </h1>
+                    <p class="mt-6 text-xl max-w-3xl">
+                        Generate engaging, conversion-driven content for all your social platforms with our AI-powered post generator. Save time, increase engagement, and grow your audience.
+                    </p>
+                    <div class="mt-10 flex gap-4">
+                        <button class="bg-white text-indigo-600 hover:bg-gray-100 px-6 py-3 rounded-md text-lg font-medium shadow-md">
+                            Create Your First Post
+                        </button>
+                        <button class="bg-transparent hover:bg-indigo-700 border border-white px-6 py-3 rounded-md text-lg font-medium">
+                            Watch Demo
+                        </button>
+                    </div>
+                    <div class="mt-10">
+                        <p class="text-lg font-medium mb-2">Works with all major platforms:</p>
+                        <div class="flex space-x-6">
+                            <i class="fab fa-instagram text-3xl platform-icon"></i>
+                            <i class="fab fa-facebook text-3xl platform-icon"></i>
+                            <i class="fab fa-twitter text-3xl platform-icon"></i>
+                            <i class="fab fa-linkedin text-3xl platform-icon"></i>
+                            <i class="fab fa-pinterest text-3xl platform-icon"></i>
+                            <i class="fab fa-tiktok text-3xl platform-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-10 lg:mt-0 lg:w-1/2">
+                    <div class="bg-white p-4 rounded-lg shadow-xl">
+                        <img src="/api/placeholder/600/400" alt="Post Generator Dashboard" class="rounded w-full" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Generate Scroll-Stopping Content
+                </h2>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our AI-powered platform helps you create customized, platform-specific posts that engage your audience and drive results.
+                </p>
+            </div>
+
+            <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Feature 1 -->
+                <div class="bg-gray-50 rounded-xl p-8 transition-all duration-300 card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-5">
+                        <i class="fas fa-magic text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">AI-Powered Creation</h3>
+                    <p class="mt-4 text-gray-600">
+                        Generate platform-optimized posts with our advanced AI that understands your brand voice and audience preferences.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-gray-50 rounded-xl p-8 transition-all duration-300 card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-5">
+                        <i class="fas fa-image text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Visual Templates</h3>
+                    <p class="mt-4 text-gray-600">
+                        Choose from hundreds of designer-crafted templates optimized for each platform's unique specifications.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-gray-50 rounded-xl p-8 transition-all duration-300 card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-5">
+                        <i class="fas fa-calendar-alt text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Scheduling & Analytics</h3>
+                    <p class="mt-4 text-gray-600">
+                        Plan your content calendar and schedule posts at optimal times. Track performance with detailed analytics.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-gray-50 rounded-xl p-8 transition-all duration-300 card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-5">
+                        <i class="fas fa-users text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Audience Insights</h3>
+                    <p class="mt-4 text-gray-600">
+                        Learn what resonates with your audience and optimize future content based on engagement data.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-gray-50 rounded-xl p-8 transition-all duration-300 card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-5">
+                        <i class="fas fa-hashtag text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Hashtag Generator</h3>
+                    <p class="mt-4 text-gray-600">
+                        Discover trending, relevant hashtags that increase your content's discoverability and reach.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-gray-50 rounded-xl p-8 transition-all duration-300 card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-5">
+                        <i class="fas fa-bullhorn text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Multi-Channel Publishing</h3>
+                    <p class="mt-4 text-gray-600">
+                        Create once and publish everywhere. Automatically adapt content for each platform's requirements.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    How It Works
+                </h2>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                    Three simple steps to creating perfect social media content
+                </p>
+            </div>
+
+            <div class="mt-16 grid gap-8 md:grid-cols-3">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">1</div>
+                    <h3 class="text-xl font-bold text-gray-900">Choose Your Platform</h3>
+                    <p class="mt-4 text-gray-600">
+                        Select which social media platform you're creating content for, and we'll optimize everything accordingly.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">2</div>
+                    <h3 class="text-xl font-bold text-gray-900">Select a Template</h3>
+                    <p class="mt-4 text-gray-600">
+                        Browse our library of platform-specific templates or start with a blank canvas.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">3</div>
+                    <h3 class="text-xl font-bold text-gray-900">Customize & Generate</h3>
+                    <p class="mt-4 text-gray-600">
+                        Input your topic, adjust settings, and let our AI create the perfect post ready to publish.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-md text-lg font-medium shadow-md">
+                    Start Creating Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    What Our Users Say
+                </h2>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                    Join thousands of marketers and content creators who are saving time and growing their presence
+                </p>
+            </div>
+
+            <div class="mt-16 grid gap-8 md:grid-cols-3">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 rounded-xl p-8 relative">
+                    <div class="absolute -top-4 -left-4 w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "PostPro has completely transformed how I manage social media for my clients. I'm able to create a week's worth of content in under an hour!"
+                    </p>
+                    <div class="mt-6 flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full bg-gray-300" src="/api/placeholder/40/40" alt="">
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-gray-900">Sarah Johnson</h3>
+                            <p class="text-sm text-gray-500">Digital Marketing Agency Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 rounded-xl p-8 relative">
+                    <div class="absolute -top-4 -left-4 w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "The AI suggestions are surprisingly good and on-brand. Our engagement has increased by 43% since we started using PostPro for our content."
+                    </p>
+                    <div class="mt-6 flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full bg-gray-300" src="/api/placeholder/40/40" alt="">
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-gray-900">Michael Chen</h3>
+                            <p class="text-sm text-gray-500">E-commerce Brand Manager</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 rounded-xl p-8 relative">
+                    <div class="absolute -top-4 -left-4 w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "As a solopreneur, this tool has been a game-changer. I can maintain a professional social presence without hiring a dedicated team."
+                    </p>
+                    <div class="mt-6 flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full bg-gray-300" src="/api/placeholder/40/40" alt="">
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-gray-900">Jessica Rodriguez</h3>
+                            <p class="text-sm text-gray-500">Independent Business Coach</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Pricing Plans
+                </h2>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                    Choose the perfect plan for your social media needs
+                </p>
+            </div>
+
+            <div class="mt-16 grid gap-8 md:grid-cols-3">
+                <!-- Free Plan -->
+                <div class="bg-white rounded-xl p-8 border border-gray-200 shadow-sm transition-all duration-300 card-hover">
+                    <h3 class="text-xl font-bold text-gray-900">Free</h3>
+                    <p class="mt-4 text-gray-600 h-12">
+                        Perfect for individuals just getting started.
+                    </p>
+                    <div class="mt-6">
+                        <span class="text-4xl font-extrabold text-gray-900">$0</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <ul class="mt-6 space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">5 posts per month</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">Basic templates</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">Standard AI generation</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            <span>Advanced analytics</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            <span>Scheduling tools</span>
+                        </li>
+                    </ul>
+                    <div class="mt-8">
+                        <button class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-3 rounded-md text-md font-medium">
+                            Sign Up Free
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="bg-white rounded-xl p-8 border-2 border-indigo-600 shadow-xl transform scale-105 z-10 transition-all duration-300 card-hover">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                        Most Popular
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Pro</h3>
+                    <p class="mt-4 text-gray-600 h-12">
+                        Ideal for small businesses and content creators.
+                    </p>
+                    <div class="mt-6">
+                        <span class="text-4xl font-extrabold text-gray-900">$29</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <ul class="mt-6 space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">50 posts per month</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">All premium templates</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">Advanced AI generation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">Basic analytics</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">Scheduling tools</span>
+                        </li>
+                    </ul>
+                    <div class="mt-8">
+                        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-md text-md font-medium">
+                            Start Pro Trial
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Business Plan -->
+                <div class="bg-white rounded-xl p-8 border border-gray-200 shadow-sm transition-all duration-300 card-hover">
+                    <h3 class="text-xl font-bold text-gray-900">Business</h3>
+                    <p class="mt-4 text-gray-600 h-12">
+                        For marketing teams and agencies managing multiple brands.
+                    </p>
+                    <div class="mt-6">
+                        <span class="text-4xl font-extrabold text-gray-900">$99</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <ul class="mt-6 space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">Unlimited posts</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">All premium templates</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">Brand voice training</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">Advanced analytics</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="text-gray-700">Team collaboration tools</span>
+                        </li>
+                    </ul>
+                    <div class="mt-8">
+                        <button class="w-full bg-white hover:bg-gray-100 text-indigo-600 border border-indigo-600 px-4 py-3 rounded-md text-md font-medium">
+                            Contact Sales
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="gradient-bg text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold sm:text-4xl">
+                Ready to Transform Your Social Media?
+            </h2>
+            <p class="mt-4 text-xl max-w-3xl mx-auto">
+                Join thousands of creators saving time and boosting engagement with PostPro.
+            </p>
+            <div class="mt-8 flex justify-center">
+                <button class="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-4 rounded-md text-lg font-medium shadow-md">
+                    Get Started Free
+                </button>
+            </div>
+            <p class="mt-4 text-sm opacity-80">
+                No credit card required. Free plan available forever.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">PostPro</h3>
+                    <p class="text-sm text-gray-400">
+                        AI-powered social media content generation platform to help you create engaging content in minutes.
+                    </p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Product</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-400 hover
